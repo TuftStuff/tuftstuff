@@ -46,7 +46,7 @@ if (!isset($_SESSION['user'])) {
                     </a>
                 </li>
                 <li>
-                    <a href="Add.html">+ Add Post</a>
+                    <a href="Add.php">+ Add Post</a>
                 </li>                
                 <li>
                     <a href="search.php">Search</a>
@@ -55,31 +55,31 @@ if (!isset($_SESSION['user'])) {
                     <a href="All.php">All</a>
                 </li>
                 <li>
-                    <a href="ClubStuff.html">Club Stuff</a>
+                    <a href="ClubStuff.php">Club Stuff</a>
                 </li>
                 <li>
-                    <a href="Services.html">Services</a>
+                    <a href="Services.php">Services</a>
                 </li>
                 <li>
-                    <a href="StuffForSale.html">Stuff for Sale</a>
+                    <a href="StuffForSale.php">Stuff for Sale</a>
                 </li>
                 <li>
-                    <a href="FreeStuff.html">Free Stuff</a>
+                    <a href="FreeStuff.php">Free Stuff</a>
                 </li>
                 <li>
-                    <a href="Events.html">Events</a>
+                    <a href="Events.php">Events</a>
                 </li>
                 <li>
-                    <a href="Housing.html">Housing</a>
+                    <a href="Housing.php">Housing</a>
                 </li>
                 <li>
-                    <a href="LostFound.html">Lost & Found</a>
+                    <a href="LostFound.php">Lost & Found</a>
                 </li>
                 <li>
-                    <a href="Carpool.html">Carpool</a>
+                    <a href="Carpool.php">Carpool</a>
                 </li>
                 <li>
-                    <a href="About.html">About</a>
+                    <a href="About.php">About</a>
                 </li>
                 
             </ul>

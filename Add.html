@@ -47,7 +47,10 @@ if (!isset($_SESSION['user'])) {
                 </li>
                 <li>
                     <a href="Add.php">+ Add Post</a>
-                </li>                
+                </li>
+		<li>
+                    <a href="myposts.php">My Posts</a>
+	        </li>                
                 <li>
                     <a href="search.php">Search</a>
                 </li>
@@ -91,15 +94,15 @@ if (!isset($_SESSION['user'])) {
         <div id="page-content-wrapper">
             
             <div class="container-fluid">
-                <div class="panel-heading" style = "font-size: 25px">Add a Post!</div>
+                <div class="panel-heading" style= "color: #5CADFF; font-size: 25px">Add a Post!</div>
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="panel panel-default">
+                        
                     
                         <form class="form-horizontal" action="event_form.php" method="post">
       <form action="event_form.php" method="POST"> Event: <br>
           
-          <select class= "form-control" name = "Type">
+          <select class= "form-control" name= "Type">
                 <option> Club Stuff</option>
                 <option> Services</option>
                 <option> Stuff for Sale</option>
@@ -125,7 +128,7 @@ if (!isset($_SESSION['user'])) {
                     </div>
                 </div>
             </div>
-        </div>
+        
         <!-- /#page-content-wrapper -->
 
     </div>

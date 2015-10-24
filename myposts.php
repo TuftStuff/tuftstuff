@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['user'])) {
+        header("Location: login.html");
+        exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +16,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Search</title>
+    <title>My Posts</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -41,7 +48,10 @@
                 </li>
                 <li>
                     <a href="Add.php">+ Add Post</a>
-                </li>                
+                </li>
+		<li>
+                    <a href="myposts.php">My Posts</a>
+                </li>
                 <li>
                     <a href="search.php">Search</a>
                 </li>
@@ -81,7 +91,18 @@
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
-        <p style = "color:#5CADFF; font-size: 40px; background:#432719"><a href="#menu-toggle" class="btn btn-link" id="menu-toggle"><img src = "https://www.etaadvertising.com/images/mobmenu.png" height = "30" width = "30"/></a> TuftStuff </p>
+        <p style = "color:#5CADFF; font-size: 40px; background:#432719"><a href="#menu-toggle" class="btn btn-link" id="menu-toggle"><img src = "https://www.etaadvertising.com/images/mobmenu.png" height = "30" width = "30"/></a> TuftStuff             <?php session_start();?>
+                <?php if(isset($_SESSION['user'])): ?>
+            <scan style = "font-size: 20px"><?= "Hello: ".$_SESSION['user']?></\
+scan>
+                <a href = "logout.php" class = "btn btn-default pull-right" id=\
+"login_button" style = "color:#5CADFF; font-size: 20px; background: #432719; bo\
+rder-color: #432719"> Logout </a>
+                <?php else: ?>
+                <a href = "login.html" class = "btn btn-default pull-right" id=\
+"login_button" style = "color:#5CADFF; font-size: 20px; background: #432719; bo\
+rder-color: #432719"> Login </a>
+                <?php endif; ?></p>
         <div id="page-content-wrapper">
             
             <div class="container-fluid">
@@ -89,22 +110,29 @@
                     <div class="col-lg-12" style = "color: #5CADFF; font-size: 15px">
                         <html>
   <body>
-      <p>
+      <p><center><h2 style = "color: #5CADFF; font-size: \      
+15px">My Posts</h2></center>
+                <hr />  
 	      <?php 
 session_start();
 $connection = new MongoClient(); // connects to database
 $db = $connection->selectDB("tuftstuff"); // connects to collection
 $collection = $connection->selectCollection($db,"Clubs");
 $search = array("Name"=>$_SESSION['user']);
+
 $cursor = $collection->find($search); // makes cursor to loops through collection
 foreach($cursor as $doc) {	
 			   echo $doc["Type"].": ".$doc["Title"]."<br>";
 			   echo "Location: ".$doc["Location"]."<br>";
 			   echo "Time: ".$doc["Time"]."<br>";
 			   echo "Description: ".$doc["Description"]."<br>";
-			   echo "<br>";			  
+$str = <<<'EOD'
+<a onclick="return confirm('Are you sure?')" href=remove.php?id=
+EOD;
+			   echo $str.$doc['_id'].">Delete</a><br><br>";
 }
 ?>
+<hr />
       </p>
     </body>
 </html>

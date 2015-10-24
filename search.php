@@ -41,7 +41,10 @@
                 </li>
                 <li>
                     <a href="Add.html">+ Add Post</a>
-                </li>                
+                </li>
+		<li>
+                    <a href="myposts.php">My Posts</a>
+                </li>
                 <li>
                     <a href="search.php">Search</a>
                 </li>
@@ -49,31 +52,31 @@
                     <a href="All.php">All</a>
                 </li>
                 <li>
-                    <a href="ClubStuff.html">Club Stuff</a>
+                    <a href="ClubStuff.php">Club Stuff</a>
                 </li>
                 <li>
-                    <a href="Services.html">Services</a>
+                    <a href="Services.php">Services</a>
                 </li>
                 <li>
-                    <a href="StuffForSale.html">Stuff for Sale</a>
+                    <a href="StuffForSale.php">Stuff for Sale</a>
                 </li>
                 <li>
-                    <a href="FreeStuff.html">Free Stuff</a>
+                    <a href="FreeStuff.php">Free Stuff</a>
                 </li>
                 <li>
-                    <a href="Events.html">Events</a>
+                    <a href="Events.php">Events</a>
                 </li>
                 <li>
-                    <a href="Housing.html">Housing</a>
+                    <a href="Housing.php">Housing</a>
                 </li>
                 <li>
-                    <a href="LostFound.html">Lost & Found</a>
+                    <a href="LostFound.php">Lost & Found</a>
                 </li>
                 <li>
-                    <a href="Carpool.html">Carpool</a>
+                    <a href="Carpool.php">Carpool</a>
                 </li>
                 <li>
-                    <a href="About.html">About</a>
+                    <a href="About.php">About</a>
                 </li>
                 
             </ul>
@@ -81,7 +84,18 @@
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
-        <p style = "color:#5CADFF; font-size: 40px; background:#432719"><a href="#menu-toggle" class="btn btn-link" id="menu-toggle"><img src = "https://www.etaadvertising.com/images/mobmenu.png" height = "30" width = "30"/></a> TuftStuff </p>
+        <p style = "color:#5CADFF; font-size: 40px; background:#432719"><a href="#menu-toggle" class="btn btn-link" id="menu-toggle"><img src = "https://www.etaadvertising.com/images/mobmenu.png" height = "30" width = "30"/></a> TuftStuff             <?php session_start();?>
+                <?php if(isset($_SESSION['user'])): ?>
+            <scan style = "font-size: 20px"><?= "Hello: ".$_SESSION['user']?></\
+scan>
+                <a href = "logout.php" class = "btn btn-default pull-right" id=\
+"login_button" style = "color:#5CADFF; font-size: 20px; background: #432719; bo\
+rder-color: #432719"> Logout </a>
+                <?php else: ?>
+                <a href = "login.html" class = "btn btn-default pull-right" id=\
+"login_button" style = "color:#5CADFF; font-size: 20px; background: #432719; bo\
+rder-color: #432719"> Login </a>
+                <?php endif; ?></p>
         <div id="page-content-wrapper">
             
             <div class="container-fluid">
@@ -89,6 +103,9 @@
                     <div class="col-lg-12" style = "color: #5CADFF; font-size: 15px">
                         <html>
   <body>
+<center><h2 style = "color: #5CADFF; font-size: \      
+15px">Search</h2></center>
+                <hr />  
       <form action="search.php" method="POST">
         <p>Title of Post? <br> <br>
           <input type="text" name="Title" /><br> <br>
@@ -116,6 +133,7 @@ foreach($cursor as $doc) {
 }
 }
 ?>
+<hr />
       </p>
     </body>
 </html>

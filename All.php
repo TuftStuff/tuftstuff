@@ -10,7 +10,6 @@
     <meta name="author" content="">
 
     <title>All</title>
-
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -41,7 +40,10 @@
                 </li>
                 <li>
                     <a href="Add.php">+ Add Post</a>
-                </li>                
+                </li>
+		<li>
+                    <a href="myposts.php">My Posts</a>
+                </li>
                 <li>
                     <a href="search.php">Search</a>
                 </li>
@@ -81,14 +83,26 @@
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
-        <p style = "color:#5CADFF; font-size: 40px; background:#432719"><a href="#menu-toggle" class="btn btn-link" id="menu-toggle"><img src = "https://www.etaadvertising.com/images/mobmenu.png" height = "30" width = "30"/></a> TuftStuff </p>
+        <p style = "color:#5CADFF; font-size: 40px; background:#432719"><a href="#menu-toggle" class="btn btn-link" id="menu-toggle"><img src = "https://www.etaadvertising.com/images/mobmenu.png" height = "30" width = "30"/></a> TuftStuff             <?php session_start();?>
+                <?php if(isset($_SESSION['user'])): ?>
+            <scan style = "font-size: 20px"><?= "Hello: ".$_SESSION['user']?></\
+scan>
+                <a href = "logout.php" class = "btn btn-default pull-right" id=\
+"login_button" style = "color:#5CADFF; font-size: 20px; background: #432719; bo\
+rder-color: #432719"> Logout </a>
+                <?php else: ?>
+                <a href = "login.html" class = "btn btn-default pull-right" id=\
+"login_button" style = "color:#5CADFF; font-size: 20px; background: #432719; bo\
+rder-color: #432719"> Login </a>
+                <?php endif; ?></p>
         <div id="page-content-wrapper">
             
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                      <p>
-			<?php
+                      <p><center><h2 style = "color: #5CADFF; font-size: \
+15px">All</h2></center>
+		<hr />	<?php
 $connection = new MongoClient();
 $db = $connection->selectDB("tuftstuff");
 $all = $db->listCollections();
@@ -110,7 +124,7 @@ foreach ( $cursor as $id => $collection )
 
 }
 }
-?>
+?><hr />
 		      </p>
                     </div>
                 </div>
