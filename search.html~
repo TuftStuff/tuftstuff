@@ -1,0 +1,38 @@
+<html>
+  <body>
+      <!--<form action="search.php" method="POST">-->
+        <p>Title of Event?
+          <input type="text" name="Title" /><br>
+	  <input type="submit" value="Search" />
+        </p>
+	<?php
+if(isset($_POST['Title'])) {
+        $Search = $_POST['Title']; // if event is in collection, sets as var
+
+
+$connection = new MongoClient(); // connects to database
+$db = $connection->selectDB("tuftstuff"); // connects to collection
+$collection = $connection->selectCollection($db,"Clubs");
+$search = array("Title"=>$_POST['Title']);
+$cursor = $collection->find($search); // makes cursor to loops through collecti\
+on
+foreach($cursor as $doc) {
+
+                           echo $doc["Type"].": ".$doc["Title"]."<br>";
+                           echo "Location: ".$doc["Location"]."<br>";
+                           echo "Time: ".$doc["Time"]."<br>";
+                           echo "Description: ".$doc["Description"]."<br>";
+                           echo "<br>";
+}
+
+
+
+
+}
+
+
+
+?>
+      </form>
+    </body>
+</html>

@@ -1,0 +1,34 @@
+<html>
+  <body>
+    <form action="event_form.php" method="post">
+      <form action="event_form.php" method="POST"> // inputting event info
+	<p>Title of Event?
+	  <input type="text" name="Title" /><br>
+	<p>Location?
+	  <input type="text" name="Location" /><br>
+	<p>Time?
+	  <input type="text" name="Time" /><br>
+	<p>Description?
+	  <input type="text" name="Description" /><br>
+	  <input type="submit" value="Submit" />
+      <script src="jquery.js"></script>
+
+    <script type="text/javascript">
+     $(document).ready(function(){
+            $('#ID_Of_Your_Button').change(function(){
+                 $.ajax({
+                       type: "GET",
+                       url: "event_form.php",
+                       data: "query="+document.form.textarea.value,
+                       success: function(msg){
+                        document.getElementById("Thanks for Submission").innerHTML = msg                         }
+                     })
+            });
+        });
+
+
+    </script>
+	</p>
+      </form>
+    </body>
+</html>

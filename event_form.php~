@@ -1,0 +1,26 @@
+<?php
+if(isset($_POST['Title'])&&($_POST['Location'])&&($_POST['Time'])&&($_POST['Description'])) { // checks to see if all required info is present
+$Title = $_POST['Title']; // stores input in variable
+$Location = $_POST['Location'];
+$Time = $_POST['Time'];
+$Description = $_POST['Description'];
+
+$timezone = date_default_timezone_get(); // gets timezone(might remove)
+$date = date('m/d/Y h:i:s a', time()); // gets date of input(to expire later)
+
+$doc = array( // puts variables into document
+    "Title" => $Title,
+    "Location" => $Location,
+    "Time" => $Time,
+    "Description" => $Description,
+    "Submission" => $timezone,
+    "Date" => $date
+);
+
+$connection = new MongoClient(); // connects to database
+$collection = $connection->tuftstuff->Events; // connects to collection
+
+$collection->insert( $doc ); // puts document in collection
+}
+header("Location:");
+?>
